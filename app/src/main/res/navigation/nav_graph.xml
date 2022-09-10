@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/construirPlazoFijo">
+
+    <fragment
+        android:id="@+id/construirPlazoFijo"
+        android:name="com.example.bancoutn.ConstruirPlazoFijo"
+        android:label="ConstruirPlazoFijo" >
+        <action
+            android:id="@+id/action_construirPlazoFijo_to_simularPlazoFijo"
+            app:destination="@id/simularPlazoFijo" />
+    </fragment>
+    <fragment
+        android:id="@+id/simularPlazoFijo"
+        android:name="com.example.bancoutn.SimularPlazoFijo"
+        android:label="SimularPlazoFijo" >
+        <action
+            android:id="@+id/action_simularPlazoFijo_to_construirPlazoFijo"
+            app:destination="@id/construirPlazoFijo" />
+    </fragment>
+</navigation>
