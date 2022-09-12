@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<resources>
+    <dimen name="tituloTamaño"> 35sp </dimen>
+    <dimen name="subtituloTamaño"> 25sp </dimen>
+    <dimen name="bodyTamaño"> 15sp </dimen>
+    <dimen name="center">50sp</dimen>
+    <dimen name="label_medium_size">150sp</dimen>
+</resources>

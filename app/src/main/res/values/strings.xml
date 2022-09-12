@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">BancoUTN</string>
+    <string name="tituloConstruir"> Construir plazo fijo</string>
+    <string name="tituloSimular"> Simular plazo fijo</string>
 </resources>

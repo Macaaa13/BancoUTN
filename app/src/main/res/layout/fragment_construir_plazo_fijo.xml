@@ -1,18 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/black"
+    >
+
+    <TextView
+        android:id="@+id/titulo"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:text="Constituir plazo fijo"
+        android:textColor="@color/white"
+        android:textSize="@dimen/tituloTamaño" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="104dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="120dp"
+            android:layout_height="match_parent"
+            app:srcCompat="@drawable/utn_logo" />
+
+        <TextView
+            android:id="@+id/tituloDescripcion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Banco UTN Santa Fe"
+            android:textAlignment="center"
+            android:layout_gravity="center"
+            android:textColor="@color/white"
+            android:textSize="@dimen/subtituloTamaño" />
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/texto_datos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Para construir tu plazo fijo necesitamos que nos proveas algunos datos." />
+        android:text="Para construir tu plazo fijo necesitamos que nos proveas algunos datos."
+        android:textColor="@color/white"
+        android:textSize="@dimen/bodyTamaño"
+        android:paddingTop="30sp"
+        />
 
-    <Button
-        android:id="@+id/button"
+    <TextView
+        android:id="@+id/nombreLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:text="Nombre"
+        android:textColor="@color/white"
+        android:textSize="@dimen/bodyTamaño"
+        android:paddingTop="30sp"
+        />
+
+    <EditText
+        android:id="@+id/nombreInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        app:backgroundTint="@color/white"
+        />
+    <TextView
+        android:id="@+id/Apellido"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Apellido"
+        android:textColor="@color/white"
+        android:textSize="@dimen/bodyTamaño"
+        android:paddingTop="30sp"
+        />
+
+    <EditText
+        android:id="@+id/apellidoInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        app:backgroundTint="@color/white"        />
+    <TextView
+        android:id="@+id/Moneda"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Moneda"
+        android:textColor="@color/white"
+        android:textSize="@dimen/bodyTamaño"
+        android:paddingTop="30sp"
+        />
+
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="150sp"
+        android:layout_height="wrap_content"
+        android:dropDownSelector="@color/white"
+        android:spinnerMode="dropdown"
+        app:backgroundTint="@color/white"
+        />
+
+    <Button
+        android:id="@+id/simularBoton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/center"
+        android:layout_marginTop="25sp"
+        android:text="Simular"
+        />
+
 </LinearLayout>

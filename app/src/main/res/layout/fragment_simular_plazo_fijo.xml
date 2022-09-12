@@ -4,14 +4,178 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/black">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/titulo"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:text="Simular plazo fijo"
+        android:textColor="@color/white"
+        android:textSize="@dimen/tituloTamaño" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="104dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="120dp"
+            android:layout_height="match_parent"
+            app:srcCompat="@drawable/utn_logo" />
+
+        <TextView
+            android:id="@+id/tituloDescripcion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Banco UTN Santa Fe"
+            android:textAlignment="center"
+            android:layout_gravity="center"
+            android:textColor="@color/white"
+            android:textSize="@dimen/subtituloTamaño" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100sp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tasaNominalLabel"
+            android:layout_width="@dimen/label_medium_size"
+            android:layout_height="wrap_content"
+            android:paddingTop="30sp"
+            android:text="Tasa nominal anual"
+            android:textColor="@color/white"
+            android:textSize="@dimen/bodyTamaño" />
+
+        <EditText
+            android:id="@+id/tasaNominalInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:textColor="@color/white"
+            app:backgroundTint="@color/white" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100sp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tasaEfectivaLabel"
+            android:layout_width="@dimen/label_medium_size"
+            android:layout_height="wrap_content"
+            android:paddingTop="30sp"
+            android:text="Tasa efectiva anual"
+            android:textColor="@color/white"
+            android:textSize="@dimen/bodyTamaño" />
+
+        <EditText
+            android:id="@+id/tasaEfectivaInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:textColor="@color/white"
+            app:backgroundTint="@color/white" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100sp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/capitalInvertirLabel"
+            android:layout_width="@dimen/label_medium_size"
+            android:layout_height="wrap_content"
+            android:paddingTop="30sp"
+            android:text="Capital a Invertir($)"
+            android:textColor="@color/white"
+            android:textSize="@dimen/bodyTamaño" />
+
+        <EditText
+            android:id="@+id/capitalInvertirInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:textColor="@color/white"
+            app:backgroundTint="@color/white" />
+    </LinearLayout>
+
+    <SeekBar
+        android:id="@+id/seekBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Simular plazo fijo">
-    </TextView>
+        android:layout_marginHorizontal="25sp"
+        android:progressBackgroundTint="@color/white"
+        android:progressTint="@color/white"
+        android:thumbTint="@color/white"
 
+        />
+
+    <CheckBox
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:text="Con renovación automática"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:text="Simulador plazo fijo en "
+        />
+    <TextView
+        android:id="@+id/plazo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/white"
+        android:text="Plazo: 30 días"
+        />
+    <TextView
+        android:id="@+id/capital"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:text="Capital: $ "
+
+        />
+    <TextView
+        android:id="@+id/intereses"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:text="Intereses ganados: $ "
+        />
+    <TextView
+        android:id="@+id/montoTotal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:text="Monto total: $ "
+        />
+    <TextView
+        android:id="@+id/montoAnual"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:text="Monto total anual: $ "
+        />
+
+    <Button
+        android:id="@+id/confirmarBoton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/center"
+        android:layout_marginTop="25sp"
+        android:text="Confirmar"
+        />
 
 </LinearLayout>
