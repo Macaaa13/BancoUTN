@@ -4,15 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/black"
     >
 
     <TextView
         android:id="@+id/titulo"
         android:layout_width="match_parent"
         android:layout_height="80dp"
+        android:textStyle="bold"
         android:text="Constituir plazo fijo"
-        android:textColor="@color/white"
         android:textSize="@dimen/tituloTamaño" />
 
     <LinearLayout
@@ -33,7 +32,6 @@
             android:text="Banco UTN Santa Fe"
             android:textAlignment="center"
             android:layout_gravity="center"
-            android:textColor="@color/white"
             android:textSize="@dimen/subtituloTamaño" />
 
     </LinearLayout>
@@ -43,7 +41,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Para construir tu plazo fijo necesitamos que nos proveas algunos datos."
-        android:textColor="@color/white"
         android:textSize="@dimen/bodyTamaño"
         android:paddingTop="30sp"
         />
@@ -53,42 +50,35 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Nombre"
-        android:textColor="@color/white"
         android:textSize="@dimen/bodyTamaño"
-        android:paddingTop="30sp"
+        android:paddingTop="35sp"
         />
 
     <EditText
         android:id="@+id/nombreInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        app:backgroundTint="@color/white"
         />
     <TextView
         android:id="@+id/Apellido"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Apellido"
-        android:textColor="@color/white"
         android:textSize="@dimen/bodyTamaño"
-        android:paddingTop="30sp"
         />
 
     <EditText
         android:id="@+id/apellidoInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        app:backgroundTint="@color/white"        />
+        />
     <TextView
         android:id="@+id/Moneda"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Moneda"
-        android:textColor="@color/white"
         android:textSize="@dimen/bodyTamaño"
-        android:paddingTop="30sp"
+
         />
 
 
@@ -96,9 +86,7 @@
         android:id="@+id/spinner"
         android:layout_width="150sp"
         android:layout_height="wrap_content"
-        android:dropDownSelector="@color/white"
         android:spinnerMode="dropdown"
-        app:backgroundTint="@color/white"
         />
 
     <Button
@@ -107,7 +95,19 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/center"
         android:layout_marginTop="25sp"
+        android:backgroundTint="@color/dark_gray"
+        android:enabled="false"
         android:text="Simular"
         />
 
+    <Button
+        android:id="@+id/constituirBoton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/center"
+        android:layout_marginTop="100sp"
+        android:backgroundTint="@color/dark_gray"
+        android:enabled="false"
+        android:text="Constituir"
+        />
 </LinearLayout>

@@ -2,6 +2,7 @@
 
 <resources>
     <string-array name="opciones_monedas">
+
         <item>Pesos</item>
         <item>Dólares</item>
         <item>Euros</item>
