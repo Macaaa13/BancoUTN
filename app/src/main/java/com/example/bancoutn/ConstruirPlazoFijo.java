@@ -36,14 +36,14 @@ public class ConstruirPlazoFijo extends Fragment{
         binding = FragmentConstruirPlazoFijoBinding.inflate(inflater);
         nombre = binding.nombreInput;
         apellido = binding.apellidoInput;
-        getParentFragmentManager().setFragmentResultListener("bundle", this, new FragmentResultListener() {
+        /*getParentFragmentManager().setFragmentResultListener("bundle", this, new FragmentResultListener() {
             @Override
             public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
                 if(result.getBoolean("simulada")){
                     binding.constituirBoton.setEnabled(true);
                 }
             }
-        });
+        });*/
         TextWatcher textWatcher = new TextWatcher(){
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -62,9 +62,7 @@ public class ConstruirPlazoFijo extends Fragment{
         };
         apellido.addTextChangedListener(textWatcher);
         nombre.addTextChangedListener(textWatcher);
-        // ACCIONES CON EL SPINNER
-        /*NO ESTOY SEGURO DE SI SE DEBE REALIZAR ASI --> CONSULTAR.*/
-        opcionesMoneda = binding.spinner.findViewById(R.id.spinner);
+        opcionesMoneda = binding.spinner;
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this.getContext(), R.array.opciones_monedas, android.R.layout.simple_spinner_item);
         opcionesMoneda.setAdapter(adapter);
         opcionesMoneda.setSelection(0);
@@ -104,14 +102,10 @@ public class ConstruirPlazoFijo extends Fragment{
                 result.putString("opcionMoneda",opcionMoneda);
                 result.putString("nombre",nombre.getText().toString());
                 result.putString("apellido",apellido.getText().toString());
-                result.putBoolean("simulada", false);
                 getParentFragmentManager().setFragmentResult("bundle",result);
                 NavHostFragment.findNavController(ConstruirPlazoFijo.this).navigate(R.id.action_construirPlazoFijo_to_simularPlazoFijo);
             }
         });
-
-
-
 
     }
 }

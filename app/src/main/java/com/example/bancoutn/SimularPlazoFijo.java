@@ -1,5 +1,6 @@
 package com.example.bancoutn;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -26,27 +27,25 @@ public class SimularPlazoFijo extends Fragment {
 
     private FragmentSimularPlazoFijoBinding binding;
     private EditText capitalInvertirInput;
-    private TextView tipoMoneda;
     private SeekBar seekBar;
     private String nombre;
     private String apellido;
-
+    private String tipoMoneda;
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         binding = FragmentSimularPlazoFijoBinding.inflate(inflater);
-
         getParentFragmentManager().setFragmentResultListener("bundle", this, new FragmentResultListener() {
             @Override
             public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
-                tipoMoneda = binding.tipoMoneda;
-                String resultadoString = result.getString("opcionMoneda");
                 nombre = result.getString("nombre");
                 apellido = result.getString("apellido");
-                binding.persona.setText("Hola "+nombre+ " " + apellido+"!. Complete los siguientes campos para simular.");
-                tipoMoneda.setText(tipoMoneda.getText().toString()+resultadoString);
+                tipoMoneda = result.getString("opcionMoneda");
+                binding.tipoMoneda.setText(binding.tipoMoneda.getText().toString()+ tipoMoneda);
+                binding.persona.setText("Hola "+nombre+" "+apellido+"!. Por favor complete los siguientes campos:");
             }
         });
+
 
         capitalInvertirInput = binding.capitalInvertirInput;
         capitalInvertirInput.addTextChangedListener(new TextWatcher() {
@@ -135,8 +134,11 @@ public class SimularPlazoFijo extends Fragment {
 
     public void showDialog() {
         AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
-        dialog.setTitle("Felicidades "+this.nombre+" "+this.apellido);
-        dialog.setMessage("Tu plazo fijo de "+binding.capitalInvertirInput.getText().toString()+" "+this.tipoMoneda.getText().toString()+"por 30 días ha sido constituido");
+        String nombre = binding.persona.getText().toString().substring(4);
+        String capital = binding.capitalInvertirInput.getText().toString();
+        String tipoMoneda = binding.tipoMoneda.getText().toString().substring(13);
+        dialog.setTitle("Felicidades "+nombre);
+        dialog.setMessage("Tu plazo fijo de $"+capital+" "+tipoMoneda+" por 30 días ha sido constituido");
         dialog.setPositiveButton("Joya", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
