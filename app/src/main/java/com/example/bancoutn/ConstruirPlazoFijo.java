@@ -36,14 +36,7 @@ public class ConstruirPlazoFijo extends Fragment{
         binding = FragmentConstruirPlazoFijoBinding.inflate(inflater);
         nombre = binding.nombreInput;
         apellido = binding.apellidoInput;
-        /*getParentFragmentManager().setFragmentResultListener("bundle", this, new FragmentResultListener() {
-            @Override
-            public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
-                if(result.getBoolean("simulada")){
-                    binding.constituirBoton.setEnabled(true);
-                }
-            }
-        });*/
+
         TextWatcher textWatcher = new TextWatcher(){
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -93,6 +86,16 @@ public class ConstruirPlazoFijo extends Fragment{
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState){
         super.onViewCreated(view, savedInstanceState);
+
+        getParentFragmentManager().setFragmentResultListener("result", this, new FragmentResultListener() {
+            @Override
+            public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
+                String vuelta = result.getString("vuelta");
+                if(vuelta == "true"){
+                    binding.constituirBoton.setEnabled(true);
+                }
+            }
+        });
 
         binding.simularBoton.setOnClickListener(new View.OnClickListener(){
             @Override

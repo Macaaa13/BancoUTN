@@ -1,6 +1,5 @@
 package com.example.bancoutn;
 
-import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -11,16 +10,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.SeekBar;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentResultListener;
-import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
-import com.example.bancoutn.databinding.FragmentConstruirPlazoFijoBinding;
 import com.example.bancoutn.databinding.FragmentSimularPlazoFijoBinding;
 
 public class SimularPlazoFijo extends Fragment {
@@ -28,9 +24,7 @@ public class SimularPlazoFijo extends Fragment {
     private FragmentSimularPlazoFijoBinding binding;
     private EditText capitalInvertirInput;
     private SeekBar seekBar;
-    private String nombre;
-    private String apellido;
-    private String tipoMoneda;
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
@@ -38,15 +32,14 @@ public class SimularPlazoFijo extends Fragment {
         getParentFragmentManager().setFragmentResultListener("bundle", this, new FragmentResultListener() {
             @Override
             public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
-                nombre = result.getString("nombre");
-                apellido = result.getString("apellido");
-                tipoMoneda = result.getString("opcionMoneda");
-                binding.tipoMoneda.setText(binding.tipoMoneda.getText().toString()+ tipoMoneda);
-                binding.persona.setText("Hola "+nombre+" "+apellido+"!. Por favor complete los siguientes campos:");
+
+                String nombre = result.getString("nombre");
+                String apellido = result.getString("apellido");
+                String tipoMoneda = result.getString("opcionMoneda");
+                binding.tipoMoneda.setText(binding.tipoMoneda.getText().toString() + tipoMoneda);
+                binding.persona.setText("Hola " + nombre + " " + apellido + "!. Por favor complete los siguientes campos:");
             }
         });
-
-
         capitalInvertirInput = binding.capitalInvertirInput;
         capitalInvertirInput.addTextChangedListener(new TextWatcher() {
             @Override
@@ -119,24 +112,25 @@ public class SimularPlazoFijo extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        // Manejo la vuelta y muestro el alert
         binding.confirmarBoton.setOnClickListener(view1 -> {
+            this.showDialog();
             Bundle result = new Bundle();
-            result.putBoolean("simulado",true);
+            result.putString("vuelta","true");
             result.putString("capital",binding.capital.getText().toString());
             result.putString("meses",binding.meses.getText().toString());
-            result.putBoolean("simulada",true);
-            getParentFragmentManager().setFragmentResult("bundle",result);
-            this.showDialog();
+            getParentFragmentManager().setFragmentResult("result",result);
             NavHostFragment.findNavController(SimularPlazoFijo.this).navigate(R.id.action_simularPlazoFijo_to_construirPlazoFijo);
         });
     }
 
     public void showDialog() {
         AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
-        String nombre = binding.persona.getText().toString().substring(4);
+        String nombre = binding.persona.getText().toString();
+        String tipoMoneda = binding.tipoMoneda.getText().toString();
         String capital = binding.capitalInvertirInput.getText().toString();
-        String tipoMoneda = binding.tipoMoneda.getText().toString().substring(13);
+        nombre = nombre.substring(4, nombre.indexOf("!"));
+        tipoMoneda = tipoMoneda.substring(tipoMoneda.indexOf(":")+1);
         dialog.setTitle("Felicidades "+nombre);
         dialog.setMessage("Tu plazo fijo de $"+capital+" "+tipoMoneda+" por 30 días ha sido constituido");
         dialog.setPositiveButton("Joya", new DialogInterface.OnClickListener() {
